@@ -18,7 +18,7 @@ function List({data}) {
                         />
                     </li>
             })
-            : <h3>***** no data available *****</h3>
+            : <h3>*** no data to show ***</h3>
         }
         </ul>
     );
