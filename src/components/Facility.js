@@ -3,11 +3,12 @@ import styled from 'styled-components';
 
 const Card = styled.div`
     display:flex;
+    
     padding-left:10px;
     text-align:center;
     width:100%;
     margin-bottom:5px;
-    border-radius:5px;
+    border-radius:3px;
     background:purple;
     color:white;
     font-size:13px;

@@ -1,7 +1,31 @@
 import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
-
+import './App.css'
+import styled from 'styled-components'
 import List from './components/List' 
+import Table from './components/Table';
+
+const Form = styled.form`
+width: 35%;
+margin: auto;
+display: flex;
+flex-direction: column;
+`;
+
+const Button = styled.button`
+border-radius:3px;
+margin-top:15px;
+margin-bottom:15px;
+width:100%;
+padding:5px;
+font-size:16px;
+background:linear-gradient(to right, #25c481, #25b7c4);
+`;
+const Heading = styled.h1`
+    text-align:center;
+`;
+
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -35,8 +59,8 @@ function App() {
   return (
     
       <Fragment>
-      <h2>Medical Facility Phone Directory</h2>
-      <form onSubmit={(e) => {
+      <Heading>NYS Medical Facility Directory</Heading>
+      <Form onSubmit={(e) => {
         setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
         e.preventDefault()       
     }}>
@@ -45,17 +69,18 @@ function App() {
                 value={query}
                 onChange={event => setQuery(event.target.value)}
             />
-            <button type="button" onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
+            <Button type="button" onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
             Search
-            </button>
-      </form>
+            </Button>
+      </Form>
       {isError && <div>Something went wrong ...</div>}
         { 
             isLoading ? (
             <div> isLoading ...</div>
             ) : (
         <div>
-            <List data={data}/>
+            
+            <Table data ={data}/>
         </div>  
         )}
       </Fragment>
