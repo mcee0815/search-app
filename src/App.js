@@ -23,6 +23,7 @@ background:linear-gradient(to right, #25c481, #25b7c4);
 `;
 const Heading = styled.h1`
     text-align:center;
+    color:darkgrey;
 `;
 
 
