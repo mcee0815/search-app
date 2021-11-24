@@ -1,26 +1,31 @@
 import React from 'react'
-import Facility from '../components/Facility' 
+import Facility from '../components/Facility'
+import styled from 'styled-components';
+const Wrapper = styled.div`
+  width:90%;
+  padding:10px;
 
-
+  margin: 0 auto;
+`;
+const ListItem = styled.li`
+  list-style:none;
+`;
 function List({data}) {
-
     return (
-        <ul>
+        <Wrapper>
         {
         data.length > 0 ?
-        
         data.map(facility => {
-            
-            return <li key={facility.fac_id}>
+            return <ListItem key={facility.fac_id}>
                         <Facility 
-                        phone={facility.fac_phone} 
-                        city={facility.city}
+                          phone={facility.fac_phone} 
+                          city={facility.facility_name}
                         />
-                    </li>
+                    </ListItem>
             })
             : <h3>*** no data to show ***</h3>
         }
-        </ul>
+        </Wrapper>
     );
   }
 

@@ -55,7 +55,6 @@ function App() {
             <div> isLoading ...</div>
             ) : (
         <div>
-        
             <List data={data}/>
         </div>  
         )}
