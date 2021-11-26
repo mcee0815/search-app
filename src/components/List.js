@@ -6,15 +6,12 @@ const Wrapper = styled.div`
   width:90%;
   padding:10px;
   margin: 0 auto;
-  
 `;
-
 const NoData = styled.h3`
   width:90%;
   text-align-center;
   margin: 0 auto;
 `;
-
 const ListItem = styled.li`
   list-style:none;
 `;

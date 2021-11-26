@@ -1,35 +1,36 @@
 import React from 'react'
-import Facility from '../components/Facility'
+// import Facility from '../components/Facility'
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width:95%;
+  width:max-width:90%;
   margin:0 auto;
 `;
-
 
 function Table({data}) {
     return (
       <Wrapper>
         <table>
-    <tr>
-      <th>Phone</th>
-      <th>Facility Name</th>
-      <th>Description</th>
-      <th>Address</th>  
-    </tr>
-        {
-            data.map(facility => {
-              return <tr>
-              <td>{facility.fac_phone}</td>
-              <td>{facility.facility_name}</td>
-              <td>{facility.description}</td>
-              <td>{facility.address1}</td>
+          <tbody>
+              <tr className="t-header">
+                <th>Phone</th>
+                <th>Facility</th>
+                <th>Description</th>
+                <th>Address</th>  
               </tr>
-                })
-        }
-  </table>
-  </Wrapper>
+                  {
+              data.map(facility => {
+                return <tr key={facility.fac_id}>
+                <td>{facility.fac_phone}</td>
+                <td>{facility.facility_name}</td>
+                <td>{facility.description}</td>
+                <td>{facility.address1}</td>
+                </tr>
+                  })
+          }
+          </tbody>
+        </table>
+      </Wrapper>
     )
   }
 

@@ -2,7 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import './App.css'
 import styled from 'styled-components'
-import List from './components/List' 
+// import List from './components/List' 
 import Table from './components/Table';
 
 const Form = styled.form`
@@ -19,13 +19,19 @@ margin-bottom:15px;
 width:100%;
 padding:5px;
 font-size:16px;
-background:linear-gradient(to right, #25c481, #25b7c4);
+font-weight:200;
+border:1px solid darkgrey;
 `;
 const Heading = styled.h1`
     text-align:center;
     color:darkgrey;
 `;
-
+const Wrapper = styled.div`
+    width:600px%;
+    margin:0 auto;
+    box-sizing:border-box;
+    padding:20px;
+`;
 
 
 function App() {
@@ -59,15 +65,13 @@ function App() {
 
   return (
     
-      <Fragment>
+      <Wrapper>
       <Heading>NYS Medical Facility Directory</Heading>
       <Form onSubmit={(e) => {
         setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
         e.preventDefault()       
-    }}>
-            <input
-                type="text"
-                value={query}
+        }}>
+            <input type="text" value={query}
                 onChange={event => setQuery(event.target.value)}
             />
             <Button type="button" onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
@@ -80,11 +84,10 @@ function App() {
             <div> isLoading ...</div>
             ) : (
         <div>
-            
-            <Table data ={data}/>
+            <Table data={data}/>
         </div>  
         )}
-      </Fragment>
+      </Wrapper>
     
   );
 }
