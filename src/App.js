@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import './App.css'
 import styled from 'styled-components'
+import { Ring } from 'react-awesome-spinners'
 // import List from './components/List' 
 import Table from './components/Table';
 
@@ -22,6 +23,7 @@ font-size:16px;
 font-weight:200;
 border:1px solid white;
 color:green;
+box-shadow: 0 8px 8px -4px grey;
 `;
 const Heading = styled.h1`
     margin-top:45px;
@@ -30,10 +32,24 @@ const Heading = styled.h1`
     color:white;
 `;
 const Wrapper = styled.div`
-    width:600px%;
-    margin:0 auto;
-    box-sizing:border-box;
-    padding:20px;
+width:600px%;
+margin:0 auto;
+box-sizing:border-box;
+padding:20px;
+`;
+const NoData = styled.div`
+width: 175px;
+    height: 75px;
+    background: white;
+    padding: 10px;
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius:5px;
+    background: #eee;
+    box-shadow: 0 8px 8px -4px grey;
 `;
 
 function App() {
@@ -72,6 +88,9 @@ function App() {
         margin:'0 auto',
         padding:10,
         boxSizing:'border-box',
+        display:'flex',
+        flexDirection:'column',
+        alignItems:'center'
       }}>
       
       <Heading>NYS Medical Facility Directory</Heading>
@@ -88,11 +107,16 @@ function App() {
       </Form>
       {isError && <div>Something went wrong ...</div>}
         { 
-            isLoading ? (
-            <div> isLoading ...</div>
+             isLoading  ? (
+            <div>  <Ring/> </div>
             ) : (
-        <div>
-            <Table data={data}/>
+        <div style={{display:'flex'}}>
+        {
+          data.length > 0 ? <Table data={data}/> 
+                : <NoData>
+                    No Data
+                  </NoData>
+        }
         </div>  
         )}
       </div>

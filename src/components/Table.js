@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
-  width:max-width:90%;
+  width:85%;
   margin:0 auto;
 `;
 
@@ -14,7 +14,7 @@ function Table({data}) {
           <tbody>
               <tr className="t-header">
                 <th>Phone</th>
-                <th>Facility</th>
+                <th>Facility Name</th>
                 <th>Description</th>
                 <th>Address</th>  
               </tr>
