@@ -13,18 +13,21 @@ flex-direction: column;
 `;
 
 const Button = styled.button`
-border-radius:3px;
+border-radius:20px;
 margin-top:15px;
-margin-bottom:15px;
+margin-bottom:45px;
 width:100%;
 padding:5px;
 font-size:16px;
 font-weight:200;
-border:1px solid darkgrey;
+border:1px solid white;
+color:green;
 `;
 const Heading = styled.h1`
+    margin-top:45px;
+    margin-bottom:45px;
     text-align:center;
-    color:darkgrey;
+    color:white;
 `;
 const Wrapper = styled.div`
     width:600px%;
@@ -32,7 +35,6 @@ const Wrapper = styled.div`
     box-sizing:border-box;
     padding:20px;
 `;
-
 
 function App() {
   const [data, setData] = useState([]);
@@ -65,7 +67,13 @@ function App() {
 
   return (
     
-      <Wrapper>
+      <div style={{
+        width:'100%',
+        margin:'0 auto',
+        padding:10,
+        boxSizing:'border-box',
+      }}>
+      
       <Heading>NYS Medical Facility Directory</Heading>
       <Form onSubmit={(e) => {
         setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
@@ -87,8 +95,7 @@ function App() {
             <Table data={data}/>
         </div>  
         )}
-      </Wrapper>
-    
+      </div>
   );
 }
 
