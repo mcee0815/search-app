@@ -7,7 +7,7 @@ import { Ring } from 'react-awesome-spinners'
 import Table from './components/Table';
 
 const Form = styled.form`
-width: 35%;
+width: 50%;
 margin: auto;
 display: flex;
 flex-direction: column;
@@ -32,14 +32,15 @@ const Heading = styled.h1`
     color:white;
 `;
 const Wrapper = styled.div`
-width:600px%;
+width:100%;
 margin:0 auto;
 box-sizing:border-box;
 padding:20px;
 `;
 const NoData = styled.div`
-width: 175px;
+    width: 30%;
     height: 75px;
+    margin:0 auto;
     background: white;
     padding: 10px;
     text-align: right;
@@ -110,14 +111,14 @@ function App() {
              isLoading  ? (
             <div>  <Ring/> </div>
             ) : (
-        <div style={{display:'flex'}}>
+        <Wrapper>
         {
           data.length > 0 ? <Table data={data}/> 
                 : <NoData>
-                    No Data
+                      No Data
                   </NoData>
         }
-        </div>  
+        </Wrapper>  
         )}
       </div>
   );
