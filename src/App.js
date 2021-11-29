@@ -1,8 +1,8 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css'
 import styled from 'styled-components'
-import { Ring } from 'react-awesome-spinners'
+import {Roller } from 'react-awesome-spinners'
 // import List from './components/List' 
 import Table from './components/Table';
 
@@ -24,6 +24,7 @@ font-weight:200;
 border:1px solid white;
 color:green;
 box-shadow: 0 8px 8px -4px grey;
+transition: 0.2s;
 `;
 const Heading = styled.h1`
     margin-top:45px;
@@ -49,13 +50,13 @@ const NoData = styled.div`
     align-items: center;
     justify-content: center;
     border-radius:5px;
-    background: #eee;
+    color:grey;
     box-shadow: 0 8px 8px -4px grey;
 `;
 
 function App() {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState('Enter a zipcode');
 //   const [search, setSearch] = useState('');
   const [isError, setIsError] = useState(false);
   const [url, setUrl] = useState(
@@ -102,14 +103,14 @@ function App() {
             <input type="text" value={query}
                 onChange={event => setQuery(event.target.value)}
             />
-            <Button type="button" onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
+            <Button type="button"  onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
             Search
             </Button>
       </Form>
       {isError && <div>Something went wrong ...</div>}
         { 
              isLoading  ? (
-            <div>  <Ring/> </div>
+            <div>  <Roller size={64} color= {'white'}/> </div>
             ) : (
         <Wrapper>
         {

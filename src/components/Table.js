@@ -2,14 +2,14 @@ import React from 'react'
 // import Facility from '../components/Facility'
 import styled from 'styled-components';
 
-const Wrapper = styled.div`
-  width:85%;
+const TableWrap = styled.div`
+  width:100%;
   margin:0 auto;
 `;
 
 function Table({data}) {
     return (
-      <Wrapper>
+      <TableWrap>
         <table>
           <tbody>
               <tr className="t-header">
@@ -30,7 +30,7 @@ function Table({data}) {
           }
           </tbody>
         </table>
-      </Wrapper>
+      </TableWrap>
     )
   }
 
