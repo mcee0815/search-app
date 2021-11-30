@@ -11,14 +11,18 @@ function Table({data}) {
     return (
       <TableWrap>
         <table>
-          <tbody>
+          
+          <thead>
               <tr className="t-header">
                 <th>Phone</th>
-                <th>Facility Name</th>
-                <th>Description</th>
+                <th>Facility</th>
+                <th>Info</th>
                 <th>Address</th>  
               </tr>
+            </thead>
+            <tbody>
                   {
+              
               data.map(facility => {
                 return <tr key={facility.fac_id}>
                 <td>{facility.fac_phone}</td>
@@ -29,6 +33,7 @@ function Table({data}) {
                   })
           }
           </tbody>
+          
         </table>
       </TableWrap>
     )

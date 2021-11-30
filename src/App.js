@@ -56,7 +56,7 @@ const NoData = styled.div`
 
 function App() {
   const [data, setData] = useState([]);
-  const [query, setQuery] = useState('Enter a zipcode');
+  const [query, setQuery] = useState('');
 //   const [search, setSearch] = useState('');
   const [isError, setIsError] = useState(false);
   const [url, setUrl] = useState(
@@ -100,10 +100,15 @@ function App() {
         setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
         e.preventDefault()       
         }}>
+            <label>Type zipcode</label>
             <input type="text" value={query}
                 onChange={event => setQuery(event.target.value)}
             />
-            <Button type="button"  onClick={() => setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)}>
+            <Button type="button"  onClick={() => {
+              setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
+              setQuery('')
+            }
+            }>
             Search
             </Button>
       </Form>
@@ -116,7 +121,7 @@ function App() {
         {
           data.length > 0 ? <Table data={data}/> 
                 : <NoData>
-                      No Data
+                      No Results
                   </NoData>
         }
         </Wrapper>  
