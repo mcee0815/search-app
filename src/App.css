@@ -95,8 +95,8 @@ input[type=text] {
   background-color: #35a37b;
   border-bottom: 1px solid lightgrey;
   color:white;
-  font-size: 16px;
-  text-align: center;
+  font-size: 20px;
+  text-align: left;
   padding:14px;
   border-radius: 20px;
   /* outline:none; */

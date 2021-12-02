@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import './App.css'
 import styled from 'styled-components'
 import {Roller } from 'react-awesome-spinners'
 // import List from './components/List' 
 import Table from './components/Table';
+// import Foo from './components/Foo';
 
 const Form = styled.form`
 width: 50%;
@@ -55,6 +56,7 @@ const NoData = styled.div`
 `;
 
 function App() {
+  const inputRef = useRef(null)
   const [data, setData] = useState([]);
   const [query, setQuery] = useState('');
 //   const [search, setSearch] = useState('');
@@ -63,8 +65,13 @@ function App() {
     `https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`,
   );
   const [isLoading, setIsLoading] = useState(false);
+  function setInputFocus() {
+    inputRef.current.focus();
+  }
 
   useEffect(() => {
+    
+    setInputFocus()
     const fetchData = async (query) => {
         let result = await axios(url);
             setData(result.data);
@@ -96,12 +103,12 @@ function App() {
       }}>
       
       <Heading>NYS Medical Facility Directory</Heading>
-      <Form onSubmit={(e) => {
+      <Form  onSubmit={(e) => {
         setUrl(`https://health.data.ny.gov/resource/vn5v-hh5r.json?fac_zip=${query}`)
         e.preventDefault()       
         }}>
             <label>Type zipcode</label>
-            <input type="text" value={query}
+            <input type="text" ref={inputRef} value={query}
                 onChange={event => setQuery(event.target.value)}
             />
             <Button type="button"  onClick={() => {
@@ -121,7 +128,7 @@ function App() {
         {
           data.length > 0 ? <Table data={data}/> 
                 : <NoData>
-                      No Results
+                      <p>No Results</p>
                   </NoData>
         }
         </Wrapper>  
